@@ -3,9 +3,10 @@ FLAGS = -Wall -Werror -Wextra
 GREP = s21_*.c
 OBJECTS=*.o
 BUILD_TEST := build_test.sh
+TEST := test_grep.sh
 
 all: style
-	test_docker
+	s21_grep
 
 s21_grep: clean
 	$(CC) $(FLAGS) $(GREP) -o s21_grep
@@ -13,6 +14,10 @@ s21_grep: clean
 test_docker: clean s21_grep
 	@chmod +x $(BUILD_TEST)
 	./$(BUILD_TEST)
+
+test: clean s21_grep
+	@chmod +x $(TEST)
+	./$(TEST)
 
 clean : 
 	rm -rf s21_grep 

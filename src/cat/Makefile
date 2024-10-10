@@ -3,6 +3,7 @@ FLAGS = -Wall -Werror -Wextra
 CAT = s21_*.c
 OBJECTS=*.o
 BUILD_TEST := build_test.sh
+TEST := tests.sh
 
 all: style
 	s21_cat
@@ -14,6 +15,9 @@ test_docker: clean s21_cat
 	@chmod +x $(BUILD_TEST)
 	./$(BUILD_TEST)
 
+test: clean s21_cat
+	@chmod +x $(TEST)
+	./$(TEST)
 
 clean : 
 	rm -rf s21_cat 
